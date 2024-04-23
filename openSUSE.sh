@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt update
+zypper update
 
 zypper install -t pattern kde kde_plasma
 
