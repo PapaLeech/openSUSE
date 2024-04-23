@@ -2,17 +2,29 @@
 
 apt update
 
-zypper install -t pattern kde kde_plasma xrdp
+zypper install -t pattern kde kde_plasma
 
-adduser xrdp ssl-cert
+zypper addrepo https://download.opensuse.org/repositories/X11:RemoteDesktop/openSUSE_Tumbleweed/X11:RemoteDesktop.repo
 
-ufw allow 3389/tcp
+zypper refresh
 
-systemctl restart xrdp
+sudo zypper ref
 
-usermod -a -G ssl-cert xrdp
+sudo zypper update
 
-systemctl restart xrdp
+zypper install firewalld
+
+zypper systemctl enable firewalld
+
+zypper systemctl start firewalld
+
+zypper systemctl status firewalld
+
+sudo firewall-cmd --add-port=3389/tcp --permanent
+
+zypper install xrdp
+
+firewall-cmd --reload
 
 zypper addrepo http://dl.google.com/linux/chrome/rpm/stable/x86_64 Google-Chrome
 
