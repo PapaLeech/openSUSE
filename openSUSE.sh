@@ -8,11 +8,11 @@ zypper addrepo https://download.opensuse.org/repositories/X11:RemoteDesktop/open
 
 zypper refresh
 
-sudo zypper ref
+zypper ref
 
-sudo zypper update
+zypper update
 
-zypper install firewalld
+y
 
 zypper systemctl enable firewalld
 
